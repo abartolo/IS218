@@ -88,7 +88,7 @@ Class question1 extends Format{
 		$DBH = new PDO('mysql:host=sql.njit.edu;dbname=ab394','ab394','8w9oBvO5r');
 		
 		// ************* 2010 **************
-			$sth = $DBH->prepare("SELECT colleges.*,enrollment_merged.enroll_num,enrollment_merged.year FROM colleges JOIN enrollment_merged ON colleges.id=enrollment_merged.id  WHERE enrollment_merged.year = 2010 AND enrollment_merged.enroll_num >= 100000  Order By enroll_num DESC LIMIT 10");
+			$sth = $DBH->prepare("SELECT colleges.*,enroll10.enroll_num,enroll10.year FROM colleges JOIN enroll10 ON colleges.id=enroll10.id  WHERE enroll10.year = 2010 AND enroll10.enroll_num >= 100000  Order By enroll_num DESC LIMIT 10");
 
 			$sth->execute();
 
@@ -127,7 +127,7 @@ Class question1 extends Format{
 		 	
 		
 			//************* 2011 ****************
-			$sth2 = $DBH->prepare("SELECT colleges.*,enrollment_merged.enroll_num,enrollment_merged.year FROM colleges JOIN enrollment_merged ON colleges.id=enrollment_merged.id  WHERE enrollment_merged.year = 2011 AND enrollment_merged.enroll_num >= 100000 Order By enroll_num DESC LIMIT 10");
+			$sth2 = $DBH->prepare("SELECT colleges.*,enroll11.enroll_num,enroll11.year FROM colleges JOIN enroll11 ON colleges.id=enroll11.id  WHERE enroll11.year = 2011 AND enroll11.enroll_num >= 100000 Order By enroll_num DESC LIMIT 10");
 			$sth2->execute();
 
 			$results2 = $sth2->fetchAll();
@@ -185,7 +185,7 @@ Class question2 extends Format{
 			$DBH = new PDO('mysql:host=sql.njit.edu;dbname=ab394','ab394','8w9oBvO5r');
 
 			// ************* 2010 **************
-			$sth = $DBH->prepare("SELECT colleges.*,finance.total_liabilities,finance.year FROM colleges JOIN finance ON colleges.id=finance.id WHERE finance.year=2010 AND finance.total_liabilities >= 1000000000 ORDER BY finance.total_liabilities DESC LIMIT 10");
+			$sth = $DBH->prepare("SELECT colleges.*,fin10.total_liabilities,fin10.year FROM colleges JOIN fin10 ON colleges.id=fin10.id WHERE fin10.year=2010 AND fin10.total_liabilities >= 1000000000 ORDER BY fin10.total_liabilities DESC LIMIT 10");
 			$sth->execute();
 
 			$results = $sth->fetchAll();
@@ -222,7 +222,7 @@ Class question2 extends Format{
 			$this->html.= "</table>";
 			
 			//************* 2011 ****************
-			$sth2 = $DBH->prepare("SELECT colleges.*,finance.total_liabilities,finance.year FROM colleges JOIN finance ON colleges.id=finance.id WHERE finance.year=2011 AND finance.total_liabilities >= 1000000000  ORDER BY finance.total_liabilities DESC LIMIT 10");
+			$sth2 = $DBH->prepare("SELECT colleges.*,fin11.total_liabilities,fin11.year FROM colleges JOIN fin11 ON colleges.id=fin11.id WHERE fin11.year=2011 AND fin11.total_liabilities >= 1000000000  ORDER BY fin11.total_liabilities DESC LIMIT 10");
 			$sth2->execute();
 
 			$results2 = $sth2->fetchAll();
@@ -273,13 +273,14 @@ Class question3 extends Format{
 						<br>
 						<br>
 						<h4>Answer</h4>
-						<br>>";
+						<br>";
 		
 		//*******Connect DB********
 			$DBH = new PDO('mysql:host=sql.njit.edu;dbname=ab394','ab394','8w9oBvO5r');
 
 			// ************* 2010 **************
-			$sth = $DBH->prepare("SELECT colleges.*,finance.total_assets,finance.year FROM colleges JOIN finance ON colleges.id=finance.id WHERE finance.year=2010 AND finance.total_assets > 1000000000 ORDER BY finance.total_assets  DESC LIMIT 10");
+			//$sth = $DBH->prepare("SELECT colleges.*,finance.total_assets,finance.year FROM colleges JOIN finance ON colleges.id=finance.id WHERE finance.year=2010 AND finance.total_assets > 1000000000 ORDER BY finance.total_assets  DESC LIMIT 10");
+			$sth = $DBH->prepare("SELECT colleges.*,fin10.total_assets,fin10.year FROM colleges JOIN fin10 ON colleges.id=fin10.id WHERE fin10.year=2010 AND fin10.total_assets > 1000000000 ORDER BY fin10.total_assets  DESC LIMIT 10");
 			$sth->execute();
 
 			$results = $sth->fetchAll();
@@ -316,7 +317,8 @@ Class question3 extends Format{
 			$this->html.= "</table>";
 			
 			//************* 2011 ****************
-			$sth2 = $DBH->prepare("SELECT colleges.*,finance.total_assets,finance.year FROM colleges JOIN finance ON colleges.id=finance.id WHERE finance.year=2011 AND finance.total_assets > 1000000000 ORDER BY finance.total_assets  DESC LIMIT 10");
+			//$sth2 = $DBH->prepare("SELECT colleges.*,finance.total_assets,finance.year FROM colleges JOIN finance ON colleges.id=finance.id WHERE finance.year=2011 AND finance.total_assets > 1000000000 ORDER BY finance.total_assets  DESC LIMIT 10");
+			$sth2 = $DBH->prepare("SELECT colleges.*,fin11.total_assets,fin11.year FROM colleges JOIN fin11 ON colleges.id=fin11.id WHERE fin11.year=2011 AND fin11.total_assets > 1000000000 ORDER BY fin11.total_assets  DESC LIMIT 10");
 			$sth2->execute();
 
 			$results2 = $sth2->fetchAll();
@@ -373,7 +375,7 @@ Class question4 extends Format{
 			$DBH = new PDO('mysql:host=sql.njit.edu;dbname=ab394','ab394','8w9oBvO5r');
 
 			// ************* 2010 **************
-			$sth = $DBH->prepare("SELECT colleges.*,finance.total_assets,finance.year FROM colleges JOIN finance ON colleges.id=finance.id WHERE finance.year=2010 AND finance.total_assets > 1000000000 ORDER BY finance.total_assets  DESC LIMIT 10");
+			$sth = $DBH->prepare("SELECT colleges.*,fin10.total_assets,fin10.year FROM colleges JOIN fin10 ON colleges.id=fin10.id WHERE fin10.year=2010 AND fin10.total_assets > 1000000000 ORDER BY fin10.total_assets  DESC LIMIT 10");
 			$sth->execute();
 
 			$results = $sth->fetchAll();
@@ -410,7 +412,7 @@ Class question4 extends Format{
 			$this->html.= "</table>";
 			
 			//************* 2011 ****************
-			$sth2 = $DBH->prepare("SELECT colleges.*,finance.total_assets,finance.year FROM colleges JOIN finance ON colleges.id=finance.id WHERE finance.year=2011 AND finance.total_assets > 1000000000 ORDER BY finance.total_assets  DESC LIMIT 10");
+			$sth2 = $DBH->prepare("SELECT colleges.*,fin11.total_assets,fin11.year FROM colleges JOIN fin11 ON colleges.id=fin11.id WHERE fin11.year=2011 AND fin11.total_assets > 1000000000 ORDER BY fin11.total_assets  DESC LIMIT 10");
 			$sth2->execute();
 
 			$results2 = $sth2->fetchAll();
@@ -468,7 +470,7 @@ Class question5 extends Format{
 			$DBH = new PDO('mysql:host=sql.njit.edu;dbname=ab394','ab394','8w9oBvO5r');
 
 			// ************* 2010 **************
-			$sth = $DBH->prepare("SELECT colleges.*,finance.total_revenue,finance.year FROM colleges JOIN finance ON colleges.id=finance.id WHERE finance.year=2010  ORDER BY finance.total_revenue  DESC LIMIT 10");
+			$sth = $DBH->prepare("SELECT colleges.*,fin10.total_revenue,fin10.year FROM colleges JOIN fin10 ON colleges.id=fin10.id WHERE fin10.year=2010  ORDER BY fin10.total_revenue  DESC LIMIT 10");
 			$sth->execute();
 
 			$results = $sth->fetchAll();
@@ -505,7 +507,7 @@ Class question5 extends Format{
 			$this->html.= "</table>";
 			
 			//************* 2011 ****************
-			$sth2 = $DBH->prepare("SELECT colleges.*,finance.total_revenue,finance.year FROM colleges JOIN finance ON colleges.id=finance.id WHERE finance.year=2011  ORDER BY finance.total_revenue  DESC LIMIT 10");
+			$sth2 = $DBH->prepare("SELECT colleges.*,fin11.total_revenue,fin11.year FROM colleges JOIN fin11 ON colleges.id=fin11.id WHERE fin11.year=2011  ORDER BY fin11.total_revenue  DESC LIMIT 10");
 			$sth2->execute();
 
 			$results2 = $sth2->fetchAll();
@@ -564,7 +566,7 @@ Class question6 extends Format{
 			// ************* 2010 **************
 			$sth = $DBH->prepare("SELECT colleges.*,enrollment_merged.enroll_num,finance.total_revenue,finance.year FROM colleges JOIN enrollment_merged ON colleges.id=enrollment_merged.id JOIN finance ON enrollment_merged.id=finance.id WHERE enrollment_merged.year=2010 and finance.year=2010 AND finance.total_revenue > 100000000 ORDER BY (finance.total_revenue/enrollment_merged.enroll_num ) DESC LIMIT 10");
 			$sth->execute();
-
+			//AND fin10.total_revenue > 100000000
 			$results = $sth->fetchAll();
 			
 			$this->html.= "<h4>Results for 2010:</h4>";	
@@ -577,7 +579,7 @@ Class question6 extends Format{
 					foreach ($insideArr as $key => $value){
 						//if($key=="id" ||$key=="name" ||$key=="state" ||$key=="enroll_num"){
 						if (gettype($key) == "string"){
-							if($key=="id" ||$key=="name" ||$key=="state" ||$key=="enroll_num"||$key=="total_revenue" ||$key=="year"){
+							if($key=="id" ||$key=="name" ||$key=="state" ||$key=="enroll_num"||$key=="total_revenue" ||$key=="year" ||$key="Rev_Per_Student"){
 								
 								$this->html.= "<th>".$key."</th>";
 							}
@@ -589,7 +591,7 @@ Class question6 extends Format{
 				$this->html.= "<tr>";
 				foreach ($insideArr as $key2 => $value2){
 					if (gettype($key2) == "string"){	
-						if($key2=="id" ||$key2=="name" ||$key2=="state" ||$key2=="enroll_num"||$key2=="total_revenue"||$key2=="year"){
+						if($key2=="id" ||$key2=="name" ||$key2=="state" ||$key2=="enroll_num"||$key2=="total_revenue"||$key2=="year"||$key2="Rev_Per_Student"){
 							$this->html.= "<td>".$value2."</td>";
 						}
 					}
@@ -599,7 +601,8 @@ Class question6 extends Format{
 			$this->html.= "</table>";
 			
 			//************* 2011 ****************
-			$sth2 = $DBH->prepare("SELECT colleges.*,enrollment_merged.enroll_num,finance.total_revenue,finance.year FROM colleges JOIN enrollment_merged ON colleges.id=enrollment_merged.id JOIN finance ON enrollment_merged.id=finance.id WHERE enrollment_merged.year=2011 and finance.year=2011 and finance.total_revenue > 100000000 ORDER BY (finance.total_revenue/enrollment_merged.enroll_num ) DESC LIMIT 10");
+			
+			$sth2 = $DBH->prepare("SELECT colleges.*,enrollment_merged.enroll_num,finance.total_revenue,finance.year FROM colleges JOIN enrollment_merged ON colleges.id=enrollment_merged.id JOIN finance ON enrollment_merged.id=finance.id WHERE enrollment_merged.year=2011 and finance.year=2011 AND finance.total_revenue > 100000000 ORDER BY (finance.total_revenue/enrollment_merged.enroll_num ) DESC LIMIT 10");
 			$sth2->execute();
 
 			$results2 = $sth2->fetchAll();
@@ -614,7 +617,7 @@ Class question6 extends Format{
 					foreach ($insideArr as $key => $value){
 						//if($key=="id" ||$key=="name" ||$key=="state" ||$key=="enroll_num"){
 						if (gettype($key) == "string"){
-							if($key=="id" ||$key=="name" ||$key=="state" ||$key=="enroll_num"||$key=="total_revenue" ||$key=="year"){
+							if($key=="id" ||$key=="name" ||$key=="state" ||$key=="enroll_num"||$key=="total_revenue" ||$key=="year" ||$key="Rev_Per_Student"){
 								
 								$this->html.= "<th>".$key."</th>";
 							}
@@ -626,7 +629,7 @@ Class question6 extends Format{
 				$this->html.= "<tr>";
 				foreach ($insideArr as $key2 => $value2){
 					if (gettype($key2) == "string"){	
-						if($key2=="id" ||$key2=="name" ||$key2=="state" ||$key2=="enroll_num"||$key2=="total_revenue" ||$key2=="year"){
+						if($key2=="id" ||$key2=="name" ||$key2=="state" ||$key2=="enroll_num"||$key2=="total_revenue" ||$key2=="year" ||$key2="Rev_Per_Student"){
 							$this->html.= "<td>".$value2."</td>";
 						}
 					}
@@ -634,6 +637,7 @@ Class question6 extends Format{
 				$this->html.= "</tr>";
 			}
 			$this->html.= "</table>";
+		
 		}
 	
 }
@@ -1291,7 +1295,7 @@ Class question12 extends Format{
 			$DBH = new PDO('mysql:host=sql.njit.edu;dbname=ab394','ab394','8w9oBvO5r');
 
 			
-			$sth = $DBH->prepare("SELECT colleges.id,colleges.name ,(((enroll11.enroll_num/enroll10.enroll_num)-1) *100) AS Percentage_Difference FROM colleges JOIN enroll10 ON colleges.id=enroll10.id JOIN enroll11 ON enroll10.id=enroll11.id ORDER BY Percentage_Difference DESC LIMIT 10");
+			$sth = $DBH->prepare("SELECT DISTINCT(colleges.id),colleges.name ,(((enroll11.enroll_num/enroll10.enroll_num)-1) *100) AS Percentage_Difference FROM colleges JOIN enroll10 ON colleges.id=enroll10.id JOIN enroll11 ON enroll10.id=enroll11.id WHERE enroll10.id=enroll11.id and enroll10.enroll_num <5000 and enroll11.enroll_num <5000 ORDER BY Percentage_Difference DESC LIMIT 10");
 			$sth->execute();
 
 			$results = $sth->fetchAll();
